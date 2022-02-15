@@ -1,0 +1,15 @@
+{
+    "name": "lipper/feishu-sdk",
+    "autoload": {
+        "psr-4": {
+            "Lipper\\FeishuSdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "zebingzhong",
+            "email": "zhongzebing@cjdgy.com"
+        }
+    ],
+    "require": {}
+}
