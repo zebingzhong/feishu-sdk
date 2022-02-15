@@ -11,5 +11,6 @@
             "email": "zhongzebing@cjdgy.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "license": "MIT"
 }
