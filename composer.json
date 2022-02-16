@@ -1,16 +1,30 @@
 {
-    "name": "lipper/feishu-sdk",
-    "autoload": {
-        "psr-4": {
-            "Lipper\\FeishuSdk\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "zebingzhong",
-            "email": "zhongzebing@cjdgy.com"
-        }
+  "name": "wwlh/feishu-sdk",
+  "autoload": {
+    "files": [
+      "src/helpers.php"
     ],
-    "require": {},
-    "license": "MIT"
+    "psr-4": {
+      "Wwlh\\FeishuSdk\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "zebingzhong",
+      "email": "zhongzebing@cjdgy.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "~6.0",
+    "illuminate/support": "^5.8|^6.0|^7.0|^8.0",
+    "league/flysystem": "1.0.8"
+  },
+  "license": "MIT",
+  "extra": {
+    "laravel": {
+      "provides": [
+        "Wwlh\\FeishuSdk\\FeiShuProvider"
+      ]
+    }
+  }
 }
