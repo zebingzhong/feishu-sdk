@@ -7,7 +7,6 @@ use Wwlh\FeishuSdk\FeiShuBase;
 
 class User extends FeiShuBase
 {
-
     /**
      * 获取单个用户的信息Url
      * @var string
@@ -31,8 +30,8 @@ class User extends FeiShuBase
     public function userDetail(string $userId, string $userIdType = 'open_id', string $departmentIdType = 'department_id'): array
     {
         $userDetailUrl = $this->userDetailUrl . '/' . $userId;
-        $response = $this->get($userDetailUrl, $this->headers, [
-                'user_id_type' => $userIdType,
+        $response      = $this->get($userDetailUrl, $this->headers, [
+                'user_id_type'       => $userIdType,
                 'department_id_type' => $departmentIdType
             ]
         );
@@ -50,9 +49,9 @@ class User extends FeiShuBase
     public function userList(string $departmentId = '0', string $userIdType = 'open_id', string $departmentIdType = 'open_department_id'): array
     {
         $response = $this->get($this->userListUrl, $this->headers, [
-                'user_id_type' => $userIdType,
+                'user_id_type'       => $userIdType,
                 'department_id_type' => $departmentIdType,
-                'department_id' => $departmentId
+                'department_id'      => $departmentId
             ]
         );
         return $response['data']['items'] ?? [];

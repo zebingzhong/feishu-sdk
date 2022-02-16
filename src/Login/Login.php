@@ -25,7 +25,7 @@ class Login extends FeiShuBase
             'Content-Type' => 'application/json; charset=utf-8'
         ], [
                 'grant_type' => $grantType,
-                'code' => $code
+                'code'       => $code
             ]
         );
         return $response['data'] ?? [];

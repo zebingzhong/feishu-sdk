@@ -19,7 +19,7 @@
   "extra": {
     "laravel": {
       "provides": [
-        "Wwlh\\FeishuSdk\\FeiShuProvider"
+        "FeiShuServiceProvider"
       ]
     }
   }

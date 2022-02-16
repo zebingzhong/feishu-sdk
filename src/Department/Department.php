@@ -31,8 +31,8 @@ class Department extends FeiShuBase
     public function departmentDetail(string $departmentId, string $userIdType = 'open_id', string $departmentIdType = 'department_id'): array
     {
         $departmentDetailUrl = $this->departmentDetailUrl . '/' . $departmentId;
-        $response = $this->get($departmentDetailUrl, $this->headers, [
-                'user_id_type' => $userIdType,
+        $response            = $this->get($departmentDetailUrl, $this->headers, [
+                'user_id_type'       => $userIdType,
                 'department_id_type' => $departmentIdType,
             ]
         );
@@ -51,10 +51,10 @@ class Department extends FeiShuBase
     public function departmentList(string $departmentId = '0', string $userIdType = 'open_id', string $departmentIdType = 'open_department_id', bool $fetchChild = true): array
     {
         $departmentListUrl = $this->departmentListUrl . '/' . $departmentId . '/children';
-        $response = $this->get($departmentListUrl, $this->headers, [
-                'user_id_type' => $userIdType,
+        $response          = $this->get($departmentListUrl, $this->headers, [
+                'user_id_type'       => $userIdType,
                 'department_id_type' => $departmentIdType,
-                'fetch_child' => $fetchChild,
+                'fetch_child'        => $fetchChild,
             ]
         );
         return $response['data']['items'] ?? [];

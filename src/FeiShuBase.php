@@ -24,16 +24,41 @@ abstract class FeiShuBase
     protected array $headers;
 
     /**
+     * @var string
+     */
+    protected string $appAccessTokenUrl = 'https://open.feishu.cn/open-apis/auth/v3/app_access_token/internal';
+
+    /**
      * @param $appId
      * @param $appSecret
      */
-    public function __construct($client, $appAccessToken)
+    public function __construct($client)
     {
+        $this->appAccessToken = $this->appAccessToken();
         $this->client = $client;
         $this->headers = [
-            'Authorization' => 'Bearer ' . $appAccessToken,
+            'Authorization' => 'Bearer ' . $this->appAccessToken,
             'Content-Type' => 'application/json; charset=utf-8'
         ];
+    }
+
+    /**
+     * @return mixed
+     * @throws GuzzleException
+     */
+    public function appAccessToken()
+    {
+        $headers  = ['Content-Type' => 'application/json; charset=utf-8'];
+        $params   = [
+            "app_id"     => config('feishu.app_id'),
+            "app_secret" => config('feishu.app_secret')
+        ];
+        $res      = $this->post($this->appAccessTokenUrl, $headers, $params);
+        $response = json_decode($res->getBody()->getContents(), true);
+        if ($response['code'] != 0) {
+            throw new \Exception("授权失败，失败原因：" . $response['msg']);
+        }
+        return $response['app_access_token'];
     }
 
     /**
@@ -53,7 +78,7 @@ abstract class FeiShuBase
         ]);
         $response = json_decode($res->getBody()->getContents(), true);
         if ($response['code'] != 0) {
-            throw new \Exception($response['msg']);
+            throw new Exception($response['msg']);
         }
         return $response;
     }
@@ -75,7 +100,7 @@ abstract class FeiShuBase
         ]);
         $response = json_decode($res->getBody()->getContents(), true);
         if ($response['code'] != 0) {
-            throw new \Exception($response['msg']);
+            throw new Exception($response['msg']);
         }
         return $response;
     }
