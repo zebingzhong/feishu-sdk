@@ -1,9 +1,6 @@
 {
   "name": "wwlh/feishu-sdk",
   "autoload": {
-    "files": [
-      "src/helpers.php"
-    ],
     "psr-4": {
       "Wwlh\\FeishuSdk\\": "src/"
     }
